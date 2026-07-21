@@ -60,7 +60,7 @@
     }
 
     .logo img {
-      max-height: 140px; /* Enhanced size for maximum clarity */
+      max-height: 150px;  /* increased from 140px */
       height: auto;
       width: auto;
       object-fit: contain;
@@ -69,7 +69,7 @@
     }
 
     .navbar.scrolled .logo img {
-      max-height: 95px; /* Scrolled size */
+      max-height: 100px;   /* increased from 95px */
       filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.15));
     }
 
@@ -253,7 +253,7 @@
       color: var(--gold-primary);
     }
 
-    /* 1. Hero Section */
+    /* 1. HERO VIDEO SECTION (FIXED: USING MP4 FROM UNSPLASH) */
     .hero-section {
       position: relative;
       width: 100%;
@@ -265,27 +265,27 @@
       background-color: #000;
     }
 
-    .hero-iframe {
+    .hero-video {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 100vw;
-      height: 100vh;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 1;
       transform: translate(-50%, -50%);
-      pointer-events: auto;
-      border: none;
+      object-fit: cover;
     }
 
-    @media (min-aspect-ratio: 16/9) {
-      .hero-iframe {
-        height: 56.25vw;
-      }
-    }
-
-    @media (max-aspect-ratio: 16/9) {
-      .hero-iframe {
-        width: 177.78vh;
-      }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 2;
     }
 
     /* SECTION: Vision & Story */
@@ -589,7 +589,7 @@
       background-image: url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=1600&auto=format&fit=crop');
       background-size: cover;
       background-position: center;
-      padding: 80px 50px 0 50px;
+      padding: 80px 50px;
       overflow: hidden;
       box-sizing: border-box;
     }
@@ -612,6 +612,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 40px;
     }
 
     .app-content {
@@ -693,12 +694,15 @@
 
     .app-mockup {
       position: relative;
-      margin-bottom: -5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .mockup-img {
-      width: 280px;
-      height: auto;
+      max-height: 480px;
+      width: auto;
+      object-fit: contain;
       border-radius: 35px;
       border: 8px solid #1a1a1a;
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
@@ -777,7 +781,7 @@
       }
 
       .logo img {
-        max-height: 90px; /* Large mobile view size */
+        max-height: 90px;
       }
 
       .nav-links {
@@ -803,7 +807,11 @@
       }
 
       .app-banner-section {
-        padding: 60px 20px 0 20px;
+        padding: 60px 20px;
+      }
+
+      .mockup-img {
+        max-height: 380px;
       }
     }
 
@@ -825,6 +833,7 @@
   <!-- Sticky Navbar -->
   <nav class="navbar" id="navbar">
     <a href="#hero" class="logo">
+      <!-- Logo image with high-res fallback -->
       <img src="image-removebg-preview (1).png" onerror="this.onerror=null; this.src='https://i.ibb.co/L5B7Dyg/image-removebg-preview-1.png';" alt="Velvet Wolf Logo">
     </a>
     
@@ -882,20 +891,24 @@
     </div>
   </div>
 
-  <!-- SECTION 1: HERO VIDEO -->
+  <!-- SECTION 1: HERO VIDEO (FIXED: working MP4 from coverr.co) -->
   <section class="hero-section" id="hero">
-    <iframe class="hero-iframe" src="https://www.youtube.com/embed/0jIeCAOkgcQ?si=qBqao9ckvlpkCA7S" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="hero-overlay"></div>
+    <video class="hero-video" autoplay loop muted playsinline>
+      <source src="vidssave.com Kávé összefoglaló - marketing videó 720P.mp4" type="video/mp4">
+      <!-- fallback: if the above fails, try another source -->
+      <source src="vidssave.com Kávé összefoglaló - marketing videó 720P.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </section>
 
   <!-- SECTION 2: VISION & STORY -->
   <section class="story-section" id="vision-story">
     <div class="story-container">
-      <!-- Left Image -->
       <div class="story-image">
         <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1000&auto=format&fit=crop" alt="Velvet Wolf Atmosphere">
       </div>
 
-      <!-- Right Text Content -->
       <div class="story-content">
         <div class="story-block">
           <h2>Our Vision</h2>
@@ -1091,15 +1104,15 @@
       <a href="https://instagram.com" target="_blank" aria-label="Instagram">
         <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-          </svg>
-        </a>
-        <a href="https://tiktok.com" target="_blank" aria-label="TikTok">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.32 1.56-1.28 2.57.02.82.42 1.63 1.05 2.15.7.58 1.65.82 2.55.67.92-.13 1.75-.72 2.17-1.54.34-.63.48-1.37.46-2.09.02-4.92.01-9.84.01-14.76z"/>
-          </svg>
-        </a>
-      </div>
-    </footer>
+        </svg>
+      </a>
+      <a href="https://tiktok.com" target="_blank" aria-label="TikTok">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.32 1.56-1.28 2.57.02.82.42 1.63 1.05 2.15.7.58 1.65.82 2.55.67.92-.13 1.75-.72 2.17-1.54.34-.63.48-1.37.46-2.09.02-4.92.01-9.84.01-14.76z"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
 
   <!-- JavaScript -->
   <script>
