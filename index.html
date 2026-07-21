@@ -60,7 +60,7 @@
     }
 
     .logo img {
-      max-height: 150px;  /* increased from 140px */
+      max-height: 150px;
       height: auto;
       width: auto;
       object-fit: contain;
@@ -69,7 +69,7 @@
     }
 
     .navbar.scrolled .logo img {
-      max-height: 100px;   /* increased from 95px */
+      max-height: 100px;
       filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.15));
     }
 
@@ -253,7 +253,7 @@
       color: var(--gold-primary);
     }
 
-    /* 1. HERO VIDEO SECTION (FIXED: USING MP4 FROM UNSPLASH) */
+    /* 1. HERO VIDEO SECTION */
     .hero-section {
       position: relative;
       width: 100%;
@@ -582,7 +582,7 @@
       background-color: var(--gold-primary);
     }
 
-    /* 5. App Banner Section */
+    /* 5. App Banner Section - FIXED: full image visible */
     .app-banner-section {
       position: relative;
       width: 100%;
@@ -697,11 +697,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-shrink: 0;
     }
 
     .mockup-img {
       max-height: 480px;
       width: auto;
+      max-width: 100%;
       object-fit: contain;
       border-radius: 35px;
       border: 8px solid #1a1a1a;
@@ -811,7 +813,8 @@
       }
 
       .mockup-img {
-        max-height: 380px;
+        max-height: 320px;
+        max-width: 220px;
       }
     }
 
@@ -825,6 +828,20 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
       }
+
+      .mockup-img {
+        max-height: 280px;
+        max-width: 180px;
+      }
+    }
+
+    /* Extra small screens */
+    @media (max-width: 400px) {
+      .mockup-img {
+        max-height: 220px;
+        max-width: 140px;
+        border-width: 5px;
+      }
     }
   </style>
 </head>
@@ -833,11 +850,9 @@
   <!-- Sticky Navbar -->
   <nav class="navbar" id="navbar">
     <a href="#hero" class="logo">
-      <!-- Logo image with high-res fallback -->
       <img src="image-removebg-preview (1).png" onerror="this.onerror=null; this.src='https://i.ibb.co/L5B7Dyg/image-removebg-preview-1.png';" alt="Velvet Wolf Logo">
     </a>
     
-    <!-- Navigation Links -->
     <ul class="nav-links">
       <li><a href="#vision-story">Vision & Story</a></li>
       <li><a href="#about">About</a></li>
@@ -846,7 +861,6 @@
       <li><a href="#app">Our App</a></li>
     </ul>
 
-    <!-- Mobile Menu Toggle Button -->
     <div class="hamburger" id="hamburger">
       <span></span>
       <span></span>
@@ -854,15 +868,13 @@
     </div>
   </nav>
 
-  <!-- Mobile Center Modal Drawer -->
+  <!-- Mobile Modal -->
   <div class="mobile-modal-overlay" id="mobileModal">
     <div class="mobile-modal-card">
       <button class="close-btn" id="closeModal">&times;</button>
-      
       <div class="modal-logo">
         <img src="image-removebg-preview (1).png" onerror="this.onerror=null; this.src='https://i.ibb.co/L5B7Dyg/image-removebg-preview-1.png';" alt="Velvet Wolf Logo">
       </div>
-
       <ul class="modal-links">
         <li><a href="#vision-story" class="modal-nav-link">VISION & STORY</a></li>
         <li><a href="#about" class="modal-nav-link">ABOUT</a></li>
@@ -870,7 +882,6 @@
         <li><a href="#instagram" class="modal-nav-link">INSTAGRAM</a></li>
         <li><a href="#app" class="modal-nav-link">OUR APP</a></li>
       </ul>
-
       <div class="modal-socials">
         <a href="https://facebook.com" target="_blank" aria-label="Facebook">
           <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
@@ -891,24 +902,33 @@
     </div>
   </div>
 
-  <!-- SECTION 1: HERO VIDEO (FIXED: working MP4 from coverr.co) -->
+  <!-- HERO VIDEO -->
   <section class="hero-section" id="hero">
     <div class="hero-overlay"></div>
     <video class="hero-video" autoplay loop muted playsinline>
-      <source src="vidssave.com Kávé összefoglaló - marketing videó 720P.mp4" type="video/mp4">
-      <!-- fallback: if the above fails, try another source -->
       <source src="vidssave.com Kávé összefoglaló - marketing videó 720P.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </section>
 
-  <!-- SECTION 2: VISION & STORY -->
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="about-container">
+      <div class="about-logo">
+        <img src="image-removebg-preview (1).png" onerror="this.onerror=null; this.src='https://i.ibb.co/L5B7Dyg/image-removebg-preview-1.png';" alt="Velvet Wolf Logo">
+      </div>
+      <p class="about-text">
+        A unique Speciality Coffee concept originating from Japan which serves and roasts the best coffee from around the world, including from their very own coffee farm. % ARABICA has an excellent reputation for its perfect yet simple cup of coffee and fine selection food. % ARABICA is simple and stylish with a Japanese minimalist design, strong brand identity and high quality coffee beans that are roasted fresh in store – the success of the business is based on the company's commitment to quality and service with the goal of letting its customers 'See the World Through Coffee'. With locations all over the world and a long list of % ARABICA branches in new countries to open over the next few years, everyone will soon be able to enjoy % ARABICA wherever, whenever!
+      </p>
+    </div>
+  </section>
+
+  <!-- VISION & STORY -->
   <section class="story-section" id="vision-story">
     <div class="story-container">
       <div class="story-image">
-        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1000&auto=format&fit=crop" alt="Velvet Wolf Atmosphere">
+        <img src="image.png" alt="Velvet Wolf Atmosphere">
       </div>
-
       <div class="story-content">
         <div class="story-block">
           <h2>Our Vision</h2>
@@ -916,7 +936,6 @@
             To become one of the UK's most admired premium coffee destinations, where every visit is defined by exceptional coffee, elegant surroundings, and genuine hospitality. We aspire to create a brand that people trust, recommend, and return to—making Velvet Wolf a symbol of quality, style, and unforgettable coffee experiences.
           </p>
         </div>
-
         <div class="story-block">
           <h2>Our Story</h2>
           <p>
@@ -930,19 +949,7 @@
     </div>
   </section>
 
-  <!-- SECTION 3: ABOUT -->
-  <section class="about-section" id="about">
-    <div class="about-container">
-      <div class="about-logo">
-        <img src="image-removebg-preview (1).png" onerror="this.onerror=null; this.src='https://i.ibb.co/L5B7Dyg/image-removebg-preview-1.png';" alt="Velvet Wolf Logo">
-      </div>
-      <p class="about-text">
-        A unique Speciality Coffee concept originating from Japan which serves and roasts the best coffee from around the world, including from their very own coffee farm. % ARABICA has an excellent reputation for its perfect yet simple cup of coffee and fine selection food. % ARABICA is simple and stylish with a Japanese minimalist design, strong brand identity and high quality coffee beans that are roasted fresh in store – the success of the business is based on the company’s commitment to quality and service with the goal of letting its customers ‘See the World Through Coffee’. With locations all over the world and a long list of % ARABICA branches in new countries to open over the next few years, everyone will soon be able to enjoy % ARABICA wherever, whenever!
-      </p>
-    </div>
-  </section>
-
-  <!-- SECTION 4: ALL STORES -->
+  <!-- STORES -->
   <section class="stores-section" id="stores">
     <h2 class="section-title">ALL STORES</h2>
     <div class="stores-grid">
@@ -952,21 +959,18 @@
         </div>
         <p class="store-name">% ARABICA Abu Dhabi Mall</p>
       </div>
-
       <div class="store-card">
         <div class="store-image-wrapper">
           <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop" alt="Al Ain Al Jimi Mall">
         </div>
         <p class="store-name">% ARABICA Al Ain Al Jimi Mall</p>
       </div>
-
       <div class="store-card">
         <div class="store-image-wrapper">
           <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop" alt="Dubai Nad Al Sheba">
         </div>
         <p class="store-name">% ARABICA Dubai Nad Al Sheba</p>
       </div>
-
       <div class="store-card">
         <div class="store-image-wrapper">
           <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=800&auto=format&fit=crop" alt="Abu Dhabi Airport">
@@ -974,13 +978,12 @@
         <p class="store-name">% ARABICA Abu Dhabi International Airport</p>
       </div>
     </div>
-
     <div class="btn-container">
       <a href="#stores" class="view-all-btn">VIEW ALL</a>
     </div>
   </section>
 
-  <!-- SECTION 5: INSTAGRAM FEED -->
+  <!-- INSTAGRAM -->
   <section class="insta-section" id="instagram">
     <h3 class="insta-title">Follow us on Instagram</h3>
     <div class="insta-grid">
@@ -1029,7 +1032,6 @@
         <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=500&auto=format&fit=crop" alt="Instagram Post">
       </div>
     </div>
-
     <div class="insta-btn-wrapper">
       <a href="https://instagram.com" target="_blank" class="insta-handle-btn">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1042,7 +1044,7 @@
     </div>
   </section>
 
-  <!-- SECTION 6: APP BANNER -->
+  <!-- APP BANNER - FIXED: full image visible -->
   <section class="app-banner-section" id="app">
     <div class="app-banner-overlay"></div>
     <div class="app-banner-container">
@@ -1051,12 +1053,10 @@
         <p class="app-desc">
           Order ahead for coffee and food at all % ARABICA Locations, or manage your subscription account the % ARABICA App.
         </p>
-
         <div class="app-download-box">
           <div class="qr-code">
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://arabica.ae" alt="Scan QR Code">
           </div>
-
           <div class="store-buttons">
             <a href="#" class="store-btn">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -1067,7 +1067,6 @@
                 <span class="big">App Store</span>
               </div>
             </a>
-
             <a href="#" class="store-btn">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M3.6 2.5c-.3.3-.4.8-.4 1.4v16.2c0 .6.1 1.1.4 1.4l.1.1 9.1-9.1v-.2L3.7 2.4l-.1.1zm12.3 9.2l-3.1-3.1v-.2l3.1-3.1.1.1 3.7 2.1c1.1.6 1.1 1.6 0 2.2l-3.8 2zm-3.1 1.1l-9.1 9.1c.3.1.7.1 1.1 0l10.3-5.9-2.3-3.2zm0-2.4l2.3-3.2-10.3-5.9c-.4-.1-.8-.1-1.1 0l9.1 9.1z"/>
@@ -1080,21 +1079,19 @@
           </div>
         </div>
       </div>
-
       <div class="app-mockup">
         <img src="https://arabica.ae/wp-content/uploads/2024/06/iPhone-qeqe.png" alt="App Screen" class="mockup-img">
       </div>
     </div>
   </section>
 
-  <!-- SECTION 7: FOOTER -->
+  <!-- FOOTER -->
   <footer class="footer-section">
     <p class="copyright-text">
       Copyright © 2026 | VELVET WOLF | All Rights Reserved | 
       <a href="#">Privacy Policy</a> | 
       <a href="#">Terms & Conditions</a>
     </p>
-
     <div class="social-icons">
       <a href="https://facebook.com" target="_blank" aria-label="Facebook">
         <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
@@ -1122,7 +1119,6 @@
     const closeModal = document.getElementById('closeModal');
     const modalNavLinks = document.querySelectorAll('.modal-nav-link');
 
-    // Sticky Navbar Scroll Effect
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
@@ -1131,7 +1127,6 @@
       }
     });
 
-    // Open/Close Mobile Modal
     hamburger.addEventListener('click', () => {
       mobileModal.classList.add('active');
     });
@@ -1146,7 +1141,6 @@
       }
     });
 
-    // Auto-close modal when link clicked
     modalNavLinks.forEach(link => {
       link.addEventListener('click', () => {
         mobileModal.classList.remove('active');
